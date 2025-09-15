@@ -1,0 +1,216 @@
+import { User, Task, Issue, PerformanceData, LeaderboardEntry, TrainingVideo } from '../types';
+
+// Mock Users Database
+export const mockUsers: User[] = [
+  {
+    id: '1',
+    fullName: 'Rajesh Kumar',
+    workerId: 'SW-101',
+    mobile: '+91-9876543210',
+    password: 'password123',
+    team: 'Team A',
+    zone: 'Sector A',
+    joinDate: '2023-01-15',
+    lastCheckup: '2024-08-15',
+    healthStatus: 'Good'
+  },
+  {
+    id: '2',
+    fullName: 'Priya Sharma',
+    workerId: 'SW-102',
+    mobile: '+91-9876543211',
+    password: 'password123',
+    team: 'Team B',
+    zone: 'Sector B',
+    joinDate: '2023-03-20',
+    lastCheckup: '2024-07-20',
+    healthStatus: 'Good'
+  },
+  {
+    id: '3',
+    fullName: 'Amit Singh',
+    workerId: 'SW-103',
+    mobile: '+91-9876543212',
+    password: 'password123',
+    team: 'Team A',
+    zone: 'Sector C',
+    joinDate: '2023-05-12',
+    lastCheckup: '2024-06-10',
+    healthStatus: 'Needs Follow-up'
+  },
+  {
+    id: '4',
+    fullName: 'Sunita Devi',
+    workerId: 'SW-104',
+    mobile: '+91-9876543213',
+    password: 'password123',
+    team: 'Team B',
+    zone: 'Sector D',
+    joinDate: '2023-07-25',
+    lastCheckup: '2024-09-01',
+    healthStatus: 'Good'
+  },
+  {
+    id: '5',
+    fullName: 'Vikram Yadav',
+    workerId: 'SW-105',
+    mobile: '+91-9876543214',
+    password: 'password123',
+    team: 'Team C',
+    zone: 'Sector E',
+    joinDate: '2023-09-05',
+    lastCheckup: '2024-08-05',
+    healthStatus: 'Good'
+  }
+];
+
+// Mock Tasks for Route
+export const mockTasks: Task[] = [
+  {
+    id: '1',
+    routeName: 'Route 1: Sector A Collection',
+    location: 'Green Park Main Gate',
+    status: 'completed',
+    lat: 28.5494,
+    lng: 77.2066,
+    weight: 25
+  },
+  {
+    id: '2',
+    routeName: 'Route 1: Sector A Collection',
+    location: 'Community Center Block A',
+    status: 'completed',
+    lat: 28.5504,
+    lng: 77.2076,
+    weight: 18
+  },
+  {
+    id: '3',
+    routeName: 'Route 1: Sector A Collection',
+    location: 'Market Complex',
+    status: 'pending',
+    lat: 28.5524,
+    lng: 77.2096,
+    weight: 0
+  },
+  {
+    id: '4',
+    routeName: 'Route 1: Sector A Collection',
+    location: 'Residential Area Phase 1',
+    status: 'pending',
+    lat: 28.5534,
+    lng: 77.2106,
+    weight: 0
+  },
+  {
+    id: '5',
+    routeName: 'Route 1: Sector A Collection',
+    location: 'School Compound',
+    status: 'pending',
+    lat: 28.5544,
+    lng: 77.2116,
+    weight: 0
+  }
+];
+
+// Mock Performance Data
+export const mockPerformanceData: PerformanceData[] = [
+  { day: 'Mon', collections: 15, weight: 120 },
+  { day: 'Tue', collections: 18, weight: 145 },
+  { day: 'Wed', collections: 12, weight: 98 },
+  { day: 'Thu', collections: 20, weight: 165 },
+  { day: 'Fri', collections: 16, weight: 130 },
+  { day: 'Sat', collections: 22, weight: 180 },
+  { day: 'Sun', collections: 14, weight: 110 }
+];
+
+// Mock Leaderboard
+export const mockLeaderboard: LeaderboardEntry[] = [
+  { rank: 1, name: 'Amit Singh', collections: 145, points: 1450 },
+  { rank: 2, name: 'Rajesh Kumar', collections: 132, points: 1320 },
+  { rank: 3, name: 'Priya Sharma', collections: 128, points: 1280 }
+];
+
+// Mock Training Videos
+export const mockTrainingVideos: TrainingVideo[] = [
+  {
+    id: '1',
+    title: 'Proper Waste Segregation Techniques',
+    duration: '8:30',
+    thumbnail: 'https://images.pexels.com/photos/2990644/pexels-photo-2990644.jpeg?auto=compress&cs=tinysrgb&w=300',
+    description: 'Learn the fundamentals of waste segregation and proper handling techniques.',
+    category: 'Safety'
+  },
+  {
+    id: '2',
+    title: 'Personal Safety Equipment Usage',
+    duration: '6:15',
+    thumbnail: 'https://images.pexels.com/photos/5462830/pexels-photo-5462830.jpeg?auto=compress&cs=tinysrgb&w=300',
+    description: 'Complete guide to using safety equipment correctly.',
+    category: 'Safety'
+  },
+  {
+    id: '3',
+    title: 'Efficient Route Planning',
+    duration: '12:45',
+    thumbnail: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=300',
+    description: 'Optimize your collection routes for maximum efficiency.',
+    category: 'Efficiency'
+  },
+  {
+    id: '4',
+    title: 'Emergency Response Procedures',
+    duration: '10:20',
+    thumbnail: 'https://images.pexels.com/photos/6069274/pexels-photo-6069274.jpeg?auto=compress&cs=tinysrgb&w=300',
+    description: 'What to do in case of emergencies during waste collection.',
+    category: 'Emergency'
+  }
+];
+
+// Mock Issues
+export let mockIssues: Issue[] = [
+  {
+    id: '1',
+    workerId: 'SW-101',
+    title: 'Bin Overflowing',
+    description: 'Large bin at Green Park is overflowing and needs immediate attention.',
+    category: 'Bin Full',
+    timestamp: '2024-01-15T10:30:00Z'
+  }
+];
+
+// Helper functions for mock database operations
+export const saveUser = (user: User) => {
+  const existingIndex = mockUsers.findIndex(u => u.workerId === user.workerId);
+  if (existingIndex >= 0) {
+    mockUsers[existingIndex] = user;
+  } else {
+    mockUsers.push(user);
+  }
+};
+
+export const findUserByCredentials = (workerId: string, password: string): User | null => {
+  return mockUsers.find(user => user.workerId === workerId && user.password === password) || null;
+};
+
+export const findUserById = (id: string): User | null => {
+  return mockUsers.find(user => user.id === id) || null;
+};
+
+export const updateTaskStatus = (taskId: string, status: 'completed' | 'pending', weight?: number) => {
+  const task = mockTasks.find(t => t.id === taskId);
+  if (task) {
+    task.status = status;
+    if (weight !== undefined) {
+      task.weight = weight;
+    }
+  }
+};
+
+export const addIssue = (issue: Issue) => {
+  mockIssues.push(issue);
+};
+
+export const getTasksForUser = (): Task[] => {
+  return mockTasks;
+};
