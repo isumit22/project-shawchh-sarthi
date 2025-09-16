@@ -34,25 +34,75 @@ const Dashboard: React.FC = () => {
   const completionPercentage = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
   const totalWeight = tasks.reduce((sum, task) => sum + (task.weight || 0), 0);
 
-  const handleCompleteTask = async (taskId: string) => {
+  // ------------------ Camera + GPS + Proof Capture ------------------
+  const handleCaptureAndComplete = async (taskId: string, step: "before" | "after") => {
     setLoading(prev => ({ ...prev, [taskId]: true }));
-    
-    // Simulate API call
-    setTimeout(() => {
-      const weight = Math.floor(Math.random() * 30) + 10; // Random weight between 10-40kg
-      updateTaskStatus(taskId, 'completed', weight);
-      
-      setTasks(prev => 
-        prev.map(task => 
-          task.id === taskId 
-            ? { ...task, status: 'completed' as const, weight } 
-            : task
-        )
-      );
-      
+
+    try {
+      // 1. Ask for camera permission
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const video = document.createElement("video");
+      video.srcObject = stream;
+      await video.play();
+
+      // 2. Draw current frame
+      const canvas = document.createElement("canvas");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // 3. Get GPS location
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const { latitude, longitude } = pos.coords;
+        const timestamp = new Date().toLocaleString();
+
+        // Overlay text on the image
+        ctx.fillStyle = "white";
+        ctx.font = "20px Arial";
+        ctx.fillText(`Lat: ${latitude.toFixed(5)}, Lng: ${longitude.toFixed(5)}`, 20, canvas.height - 40);
+        ctx.fillText(`Time: ${timestamp}`, 20, canvas.height - 15);
+
+        // 4. Convert to base64 image
+        const proofImage = canvas.toDataURL("image/png");
+
+        // Stop camera
+        stream.getTracks().forEach(track => track.stop());
+
+        if (step === "before") {
+          // First capture
+          updateTaskStatus(taskId, "in-progress", undefined, proofImage);
+          setTasks(prev =>
+            prev.map(task =>
+              task.id === taskId
+                ? { ...task, status: "in-progress", proofBefore: proofImage }
+                : task
+            )
+          );
+        } else {
+          // Final capture
+          const weight = Math.floor(Math.random() * 30) + 10;
+          updateTaskStatus(taskId, "completed", weight, undefined, proofImage);
+          setTasks(prev =>
+            prev.map(task =>
+              task.id === taskId
+                ? { ...task, status: "completed", weight, proofAfter: proofImage }
+                : task
+            )
+          );
+        }
+
+        setLoading(prev => ({ ...prev, [taskId]: false }));
+      });
+    } catch (err) {
+      console.error("Camera/Location error:", err);
+      alert("Please allow camera & location access to complete task.");
       setLoading(prev => ({ ...prev, [taskId]: false }));
-    }, 1000);
+    }
   };
+  // ------------------------------------------------------------------
 
   const handleTaskSelect = (taskId: string) => {
     setSelectedTaskId(taskId);
@@ -199,12 +249,28 @@ const Dashboard: React.FC = () => {
                       <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
                         task.status === 'completed'
                           ? 'bg-green-100 text-green-800'
+                          : task.status === 'in-progress'
+                          ? 'bg-blue-100 text-blue-800'
                           : 'bg-yellow-100 text-yellow-800'
                       }`}>
-                        {task.status === 'completed' ? 'Completed' : 'Pending'}
+                        {task.status === 'completed'
+                          ? 'Completed'
+                          : task.status === 'in-progress'
+                          ? 'In Progress'
+                          : 'Pending'}
                       </span>
                       {task.weight && task.weight > 0 && (
                         <span className="text-xs text-gray-500">{task.weight}kg collected</span>
+                      )}
+                    </div>
+
+                    {/* Show proof images */}
+                    <div className="flex space-x-2 mt-2">
+                      {task.proofBefore && (
+                        <img src={task.proofBefore} alt="Before" className="rounded-lg w-32 border" />
+                      )}
+                      {task.proofAfter && (
+                        <img src={task.proofAfter} alt="After" className="rounded-lg w-32 border" />
                       )}
                     </div>
                   </div>
@@ -214,7 +280,7 @@ const Dashboard: React.FC = () => {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleCompleteTask(task.id);
+                          handleCaptureAndComplete(task.id, "before");
                         }}
                         disabled={loading[task.id]}
                         className="bg-gradient-to-r from-green-500 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-green-600 hover:to-blue-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
@@ -224,7 +290,25 @@ const Dashboard: React.FC = () => {
                         ) : (
                           <CheckCircle className="h-4 w-4" />
                         )}
-                        <span>{loading[task.id] ? 'Completing...' : 'Complete'}</span>
+                        <span>{loading[task.id] ? 'Capturing...' : 'Capture Before'}</span>
+                      </button>
+                    )}
+
+                    {task.status === 'in-progress' && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleCaptureAndComplete(task.id, "after");
+                        }}
+                        disabled={loading[task.id]}
+                        className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-purple-600 hover:to-pink-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                      >
+                        {loading[task.id] ? (
+                          <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                        ) : (
+                          <CheckCircle className="h-4 w-4" />
+                        )}
+                        <span>{loading[task.id] ? 'Completing...' : 'Capture After'}</span>
                       </button>
                     )}
                     

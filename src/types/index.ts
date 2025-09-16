@@ -15,11 +15,14 @@ export interface Task {
   id: string;
   routeName: string;
   location: string;
-  status: 'pending' | 'completed';
+  status: 'pending' | 'in-progress' | 'completed'; 
   lat: number;
   lng: number;
   weight?: number;
+  proofBefore?: string;  
+  proofAfter?: string; 
 }
+
 
 export interface Issue {
   id: string;

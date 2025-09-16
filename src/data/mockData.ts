@@ -73,7 +73,9 @@ export const mockTasks: Task[] = [
     status: 'completed',
     lat: 28.5494,
     lng: 77.2066,
-    weight: 25
+    weight: 25,
+     proofBefore: "https://images.hindustantimes.com/img/2021/09/13/1600x900/greater_noida_door_to_door_waste-collection_1631556299135_1631556299453.png",
+    proofAfter: "https://postimg.cc/bGYctq7V"
   },
   {
     id: '2',
@@ -82,7 +84,9 @@ export const mockTasks: Task[] = [
     status: 'completed',
     lat: 28.5504,
     lng: 77.2076,
-    weight: 18
+    weight: 18,
+     proofBefore: "https://via.placeholder.com/150x100.png?text=Before+Green+Park",
+    proofAfter: "https://via.placeholder.com/150x100.png?text=After+Green+Park"
   },
   {
     id: '3',
@@ -197,15 +201,31 @@ export const findUserById = (id: string): User | null => {
   return mockUsers.find(user => user.id === id) || null;
 };
 
-export const updateTaskStatus = (taskId: string, status: 'completed' | 'pending', weight?: number) => {
+export const updateTaskStatus = (
+  taskId: string,
+  status: 'pending' | 'in-progress' | 'completed',
+  weight?: number,
+  proofBefore?: string,
+  proofAfter?: string
+) => {
   const task = mockTasks.find(t => t.id === taskId);
   if (task) {
     task.status = status;
+
     if (weight !== undefined) {
       task.weight = weight;
     }
+
+    if (proofBefore) {
+      task.proofBefore = proofBefore;
+    }
+
+    if (proofAfter) {
+      task.proofAfter = proofAfter;
+    }
   }
 };
+
 
 export const addIssue = (issue: Issue) => {
   mockIssues.push(issue);
