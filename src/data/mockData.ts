@@ -86,7 +86,7 @@ export const mockTasks: Task[] = [
     lng: 77.2076,
     weight: 18,
      proofBefore: "Gemini_Genevr2063vr2.png",
-    proofAfter: "/gem256.png"
+    proofAfter: "https://freeimage.host/i/KR7hT6x"
   },
   {
     id: '3',
