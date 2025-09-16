@@ -75,7 +75,7 @@ export const mockTasks: Task[] = [
     lng: 77.2066,
     weight: 25,
      proofBefore: "https://images.hindustantimes.com/img/2021/09/13/1600x900/greater_noida_door_to_door_waste-collection_1631556299135_1631556299453.png",
-    proofAfter: "https://postimg.cc/bGYctq7V"
+    proofAfter: "/unnamed.png"
   },
   {
     id: '2',
@@ -85,8 +85,8 @@ export const mockTasks: Task[] = [
     lat: 28.5504,
     lng: 77.2076,
     weight: 18,
-     proofBefore: "https://via.placeholder.com/150x100.png?text=Before+Green+Park",
-    proofAfter: "https://via.placeholder.com/150x100.png?text=After+Green+Park"
+     proofBefore: "Gemini_Genevr2063vr2.png",
+    proofAfter: "/gem256.png"
   },
   {
     id: '3',
