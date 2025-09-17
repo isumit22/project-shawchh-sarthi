@@ -74,8 +74,8 @@ export const mockTasks: Task[] = [
     lat: 28.5494,
     lng: 77.2066,
     weight: 25,
-     proofBefore: "https://images.hindustantimes.com/img/2021/09/13/1600x900/greater_noida_door_to_door_waste-collection_1631556299135_1631556299453.png",
-    proofAfter: "/unnamed.png"
+     proofBefore: "https://ik.imagekit.io/sihhackstone/greater_noida_door_to_door_waste-collection_1631556299135_1631556299453.jpeg",
+    proofAfter: "https://ik.imagekit.io/sihhackstone/unnamed.png"
   },
   {
     id: '2',
@@ -85,8 +85,8 @@ export const mockTasks: Task[] = [
     lat: 28.5504,
     lng: 77.2076,
     weight: 18,
-     proofBefore: "Gemini_Genevr2063vr2.png",
-    proofAfter: "https://github.com/isumit22/project-shawchh-sarthi/blob/main/Gem256.png"
+     proofBefore: "https://ik.imagekit.io/sihhackstone/Gemini_Genevr2063vr2.png?updatedAt=1758101678699",
+    proofAfter: "https://ik.imagekit.io/sihhackstone/Gem256.png?updatedAt=1758102184684"
   },
   {
     id: '3',
