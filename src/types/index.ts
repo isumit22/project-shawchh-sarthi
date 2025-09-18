@@ -54,4 +54,5 @@ export interface TrainingVideo {
   thumbnail: string;
   description: string;
   category: string;
+  url: string;
 }

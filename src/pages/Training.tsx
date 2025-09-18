@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { mockTrainingVideos } from '../data/mockData';
 import { TrainingVideo } from '../types';
-import { 
-  Play, 
-  Clock, 
-  BookOpen, 
-  Shield, 
-  AlertTriangle, 
+import {
+  Play,
+  Clock,
+  BookOpen,
+  Shield,
+  AlertTriangle,
   CheckCircle,
   X,
   Zap,
   Users,
-  FileText
+  FileText,
 } from 'lucide-react';
 
 const Training: React.FC = () => {
@@ -23,45 +23,46 @@ const Training: React.FC = () => {
     { id: 'all', label: 'All Videos', icon: BookOpen },
     { id: 'Safety', label: 'Safety', icon: Shield },
     { id: 'Efficiency', label: 'Efficiency', icon: Zap },
-    { id: 'Emergency', label: 'Emergency', icon: AlertTriangle }
+    { id: 'Emergency', label: 'Emergency', icon: AlertTriangle },
   ];
 
   const safetyGuidelines = [
     {
       title: 'Personal Protective Equipment',
       description: 'Always wear gloves, safety vest, and appropriate footwear',
-      icon: Shield
+      icon: Shield,
     },
     {
       title: 'Proper Lifting Techniques',
       description: 'Bend your knees, keep your back straight, and lift with your legs',
-      icon: Users
+      icon: Users,
     },
     {
       title: 'Chemical Handling',
       description: 'Never mix chemicals and always read labels before handling',
-      icon: AlertTriangle
+      icon: AlertTriangle,
     },
     {
       title: 'Emergency Procedures',
       description: 'Know the location of emergency exits and first aid stations',
-      icon: CheckCircle
+      icon: CheckCircle,
     },
     {
       title: 'Vehicle Safety',
       description: 'Perform daily vehicle inspections and follow traffic rules',
-      icon: Zap
+      icon: Zap,
     },
     {
       title: 'Communication Protocol',
       description: 'Report incidents immediately and maintain radio contact',
-      icon: FileText
-    }
+      icon: FileText,
+    },
   ];
 
-  const filteredVideos = selectedCategory === 'all' 
-    ? mockTrainingVideos 
-    : mockTrainingVideos.filter(video => video.category === selectedCategory);
+  const filteredVideos =
+    selectedCategory === 'all'
+      ? mockTrainingVideos
+      : mockTrainingVideos.filter((video) => video.category === selectedCategory);
 
   const handleVideoClick = (video: TrainingVideo) => {
     setSelectedVideo(video);
@@ -80,7 +81,9 @@ const Training: React.FC = () => {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold">Training & Resources</h1>
-            <p className="text-green-100 mt-1">Enhance your skills and stay safe on the job</p>
+            <p className="text-green-100 mt-1">
+              Enhance your skills and stay safe on the job
+            </p>
           </div>
           <div className="hidden sm:block">
             <div className="bg-white bg-opacity-20 p-4 rounded-xl text-center">
@@ -118,8 +121,8 @@ const Training: React.FC = () => {
         <div className="p-6 border-b border-gray-100">
           <h2 className="text-xl font-bold text-gray-900">Training Videos</h2>
           <p className="text-sm text-gray-500 mt-1">
-            {selectedCategory === 'all' 
-              ? 'All available training modules' 
+            {selectedCategory === 'all'
+              ? 'All available training modules'
               : `${selectedCategory} training modules`}
           </p>
         </div>
@@ -144,14 +147,14 @@ const Training: React.FC = () => {
                       <Play className="h-6 w-6 text-green-600" />
                     </div>
                   </div>
-                  
+
                   {/* Category Badge */}
                   <div className="absolute top-3 left-3">
                     <span className="bg-white bg-opacity-90 text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
                       {video.category}
                     </span>
                   </div>
-                  
+
                   {/* Duration */}
                   <div className="absolute bottom-3 right-3">
                     <div className="bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs flex items-center space-x-1">
@@ -185,29 +188,36 @@ const Training: React.FC = () => {
             </div>
             <div>
               <h2 className="text-xl font-bold text-gray-900">Safety Guidelines</h2>
-              <p className="text-sm text-gray-500">Essential safety rules for waste collection workers</p>
+              <p className="text-sm text-gray-500">
+                Essential safety rules for waste collection workers
+              </p>
             </div>
           </div>
         </div>
 
         <div className="p-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {safetyGuidelines.map((guideline, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-200 hover:shadow-md transition-all duration-200"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="bg-gradient-to-r from-green-100 to-blue-100 p-3 rounded-full flex-shrink-0">
-                    <guideline.icon className="h-6 w-6 text-green-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">{guideline.title}</h3>
-                    <p className="text-sm text-gray-600">{guideline.description}</p>
+            {safetyGuidelines.map((guideline, index) => {
+              const Icon = guideline.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-200 hover:shadow-md transition-all duration-200"
+                >
+                  <div className="flex items-start space-x-4">
+                    <div className="bg-gradient-to-r from-green-100 to-blue-100 p-3 rounded-full flex-shrink-0">
+                      <Icon className="h-6 w-6 text-green-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">
+                        {guideline.title}
+                      </h3>
+                      <p className="text-sm text-gray-600">{guideline.description}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -216,9 +226,12 @@ const Training: React.FC = () => {
       {isModalOpen && selectedVideo && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl max-w-4xl w-full max-h-screen overflow-y-auto">
+            {/* Modal Header */}
             <div className="p-6 border-b border-gray-100">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-bold text-gray-900">{selectedVideo.title}</h3>
+                <h3 className="text-xl font-bold text-gray-900">
+                  {selectedVideo.title}
+                </h3>
                 <button
                   onClick={closeModal}
                   className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -228,14 +241,17 @@ const Training: React.FC = () => {
               </div>
             </div>
 
+            {/* Actual Video Player */}
             <div className="p-6">
-              {/* Placeholder Video Player */}
-              <div className="bg-gray-900 rounded-xl aspect-video mb-6 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <Play className="h-16 w-16 mx-auto mb-4 opacity-50" />
-                  <p className="text-lg font-medium">Video Player</p>
-                  <p className="text-sm text-gray-300 mt-2">Duration: {selectedVideo.duration}</p>
-                </div>
+              <div className="rounded-xl overflow-hidden aspect-video mb-6">
+                <iframe
+                  className="w-full h-full"
+                  src={selectedVideo.url.replace('watch?v=', 'embed/')}
+                  title={selectedVideo.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
 
               {/* Video Description */}

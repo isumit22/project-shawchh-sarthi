@@ -136,22 +136,25 @@ export const mockLeaderboard: LeaderboardEntry[] = [
 ];
 
 // Mock Training Videos
-export const mockTrainingVideos: TrainingVideo[] = [
+
+  export const mockTrainingVideos: TrainingVideo[] = [
   {
     id: '1',
     title: 'Proper Waste Segregation Techniques',
-    duration: '8:30',
-    thumbnail: 'https://images.pexels.com/photos/2990644/pexels-photo-2990644.jpeg?auto=compress&cs=tinysrgb&w=300',
+    duration: '1:32',
+    thumbnail: 'https://vincular.in/wp-content/uploads/2023/11/Know-your-waste.png',
     description: 'Learn the fundamentals of waste segregation and proper handling techniques.',
-    category: 'Safety'
+    category: 'Safety',
+    url: 'https://youtu.be/WGA_5tAIQ6c?si=QOGGmMWyJtQ4pOKY'
   },
   {
     id: '2',
     title: 'Personal Safety Equipment Usage',
     duration: '6:15',
-    thumbnail: 'https://images.pexels.com/photos/5462830/pexels-photo-5462830.jpeg?auto=compress&cs=tinysrgb&w=300',
+    thumbnail: 'https://uppler-platform-otego.s3.eu-west-3.amazonaws.com/uppler_default/98/af/985ab1c83bc8374a1ef0f16cd62d.webp',
     description: 'Complete guide to using safety equipment correctly.',
-    category: 'Safety'
+    category: 'Safety',
+    url: 'https://youtu.be/Qyy0Svl1kZI?si=582qIvF_mwIHjxh1'
   },
   {
     id: '3',
@@ -159,15 +162,17 @@ export const mockTrainingVideos: TrainingVideo[] = [
     duration: '12:45',
     thumbnail: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=300',
     description: 'Optimize your collection routes for maximum efficiency.',
-    category: 'Efficiency'
+    category: 'Efficiency',
+    url: 'https://youtu.be/TWEEHimBZj0?si=1PfAHcQTn2p0outS'
   },
   {
     id: '4',
     title: 'Emergency Response Procedures',
     duration: '10:20',
-    thumbnail: 'https://images.pexels.com/photos/6069274/pexels-photo-6069274.jpeg?auto=compress&cs=tinysrgb&w=300',
+    thumbnail: 'https://as2.ftcdn.net/jpg/02/23/61/03/1000_F_223610323_kbLysI0UTi9lhyu1kEIUpAFf8YOgXki7.jpg',
     description: 'What to do in case of emergencies during waste collection.',
-    category: 'Emergency'
+    category: 'Emergency',
+    url: 'https://youtu.be/iloc_qAJv5I?si=rme_zD1_e5WEujBj'
   }
 ];
 
