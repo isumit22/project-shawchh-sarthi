@@ -145,7 +145,7 @@ export const mockLeaderboard: LeaderboardEntry[] = [
     thumbnail: 'https://vincular.in/wp-content/uploads/2023/11/Know-your-waste.png',
     description: 'Learn the fundamentals of waste segregation and proper handling techniques.',
     category: 'Safety',
-    url: 'https://youtu.be/WGA_5tAIQ6c?si=QOGGmMWyJtQ4pOKY'
+    url: 'https://collection.cloudinary.com/dmfmgutg6/5c879f00d54e4262b0e7a3de43d7bb77'
   },
   {
     id: '2',
@@ -154,7 +154,7 @@ export const mockLeaderboard: LeaderboardEntry[] = [
     thumbnail: 'https://uppler-platform-otego.s3.eu-west-3.amazonaws.com/uppler_default/98/af/985ab1c83bc8374a1ef0f16cd62d.webp',
     description: 'Complete guide to using safety equipment correctly.',
     category: 'Safety',
-    url: 'https://youtu.be/Qyy0Svl1kZI?si=582qIvF_mwIHjxh1'
+    url: 'https://collection.cloudinary.com/dmfmgutg6/3b3885078f957018c3109d37b5e64180'
   },
   {
     id: '3',
@@ -163,7 +163,7 @@ export const mockLeaderboard: LeaderboardEntry[] = [
     thumbnail: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=300',
     description: 'Optimize your collection routes for maximum efficiency.',
     category: 'Efficiency',
-    url: 'https://youtu.be/TWEEHimBZj0?si=1PfAHcQTn2p0outS'
+    url: 'https://collection.cloudinary.com/dmfmgutg6/4dea0c1f9aa3b1e38f8004dbacb80769'
   },
   {
     id: '4',
@@ -172,7 +172,7 @@ export const mockLeaderboard: LeaderboardEntry[] = [
     thumbnail: 'https://as2.ftcdn.net/jpg/02/23/61/03/1000_F_223610323_kbLysI0UTi9lhyu1kEIUpAFf8YOgXki7.jpg',
     description: 'What to do in case of emergencies during waste collection.',
     category: 'Emergency',
-    url: 'https://youtu.be/iloc_qAJv5I?si=rme_zD1_e5WEujBj'
+    url: 'https://collection.cloudinary.com/dmfmgutg6/e7f56851e3e869b3f36b5a4d821aec3f'
   }
 ];
 
