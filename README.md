@@ -370,6 +370,11 @@ This platform represents a significant step toward:
 
 ## 📄 License & Credits
 
+### License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+**Copyright (c) 2025 Sumit Chaubey and Vishnu Jaiswal**
+
 ### Technology Credits
 - React.js ecosystem for robust frontend development
 - Leaflet for interactive mapping capabilities
